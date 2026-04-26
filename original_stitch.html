@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EduPlay - Khám Phá Tiềm Năng Trí Tuệ Của Trẻ</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&amp;family=Nunito+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#004c6d",
+                    "tertiary-container": "#5bb3ea",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed": "#291800",
+                    "error": "#ba1a1a",
+                    "primary-container": "#6cbe45",
+                    "on-surface-variant": "#40493a",
+                    "inverse-on-surface": "#ebf2f4",
+                    "on-error": "#ffffff",
+                    "surface-bright": "#f4fafd",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#d4dbdd",
+                    "background": "#f4fafd",
+                    "surface-tint": "#276c00",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#161d1f",
+                    "on-primary-fixed-variant": "#1c5200",
+                    "inverse-surface": "#2b3234",
+                    "surface-container": "#e8eff1",
+                    "on-tertiary-container": "#004362",
+                    "on-secondary-container": "#6c4700",
+                    "on-secondary": "#ffffff",
+                    "surface-container-high": "#e2e9ec",
+                    "secondary-fixed": "#ffddb0",
+                    "secondary-container": "#ffb224",
+                    "inverse-primary": "#87db5e",
+                    "outline": "#707a68",
+                    "on-surface": "#161d1f",
+                    "primary-fixed": "#a2f877",
+                    "on-primary": "#ffffff",
+                    "surface": "#f4fafd",
+                    "tertiary-fixed": "#c8e6ff",
+                    "tertiary": "#006590",
+                    "on-primary-fixed": "#072100",
+                    "on-secondary-fixed-variant": "#614000",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#001e2e",
+                    "surface-variant": "#dde4e6",
+                    "surface-container-low": "#eef5f7",
+                    "primary-fixed-dim": "#87db5e",
+                    "on-primary-container": "#184900",
+                    "secondary-fixed-dim": "#ffba47",
+                    "outline-variant": "#c0cab5",
+                    "tertiary-fixed-dim": "#87ceff",
+                    "primary": "#276c00",
+                    "surface-container-highest": "#dde4e6",
+                    "secondary": "#805600"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "section-gap": "80px",
+                    "base": "8px",
+                    "container-max": "1200px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "display-md": ["Quicksand"],
+                    "label-lg": ["Quicksand"],
+                    "display-lg": ["Quicksand"],
+                    "headline-lg": ["Quicksand"],
+                    "body-lg": ["Nunito Sans"],
+                    "body-md": ["Nunito Sans"]
+            },
+            "fontSize": {
+                    "display-md": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bouncy-btn {
+            box-shadow: 0 4px 0 0 #184900;
+            transition: all 0.34s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .bouncy-btn:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 6px 0 0 #184900;
+        }
+        .bouncy-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 0px 0 0 #184900;
+        }
+        .bouncy-secondary {
+            box-shadow: 0 4px 0 0 #6c4700;
+            transition: all 0.34s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .bouncy-secondary:active {
+            transform: translateY(2px);
+            box-shadow: 0 0px 0 0 #6c4700;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .jiggle:hover span {
+            display: inline-block;
+            animation: jiggle 0.5s ease-in-out infinite;
+        }
+        @keyframes jiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            75% { transform: rotate(-5deg); }
+        }
+        
+        /* Floating Navigation Styles */
+        .nav-dot-tooltip {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+            transform: translateX(10px);
+        }
+        .nav-dot-container:hover .nav-dot-tooltip {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .nav-dot-active {
+            background-color: #6cbe45 !important;
+            transform: scale(1.25);
+            box-shadow: 0 0 10px rgba(108, 190, 69, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container relative">
+<!-- Sticky Floating Navigation Sidebar -->
+<aside class="fixed right-6 top-1/2 -translate-y-1/2 z-[60] hidden lg:flex flex-col gap-4 p-3 bg-white/40 backdrop-blur-md rounded-full shadow-lg border border-white/50">
+<a class="nav-dot-container group relative flex items-center justify-center" href="#hero">
+<div class="w-3 h-3 rounded-full bg-slate-300 transition-all duration-300 group-hover:bg-primary-container nav-dot"></div>
+<span class="nav-dot-tooltip absolute right-full mr-4 px-3 py-1 bg-white text-on-surface text-xs font-bold rounded-lg shadow-md whitespace-nowrap border border-slate-100">Trang chủ</span>
+</a>
+<a class="nav-dot-container group relative flex items-center justify-center" href="#pain-points">
+<div class="w-3 h-3 rounded-full bg-slate-300 transition-all duration-300 group-hover:bg-primary-container nav-dot"></div>
+<span class="nav-dot-tooltip absolute right-full mr-4 px-3 py-1 bg-white text-on-surface text-xs font-bold rounded-lg shadow-md whitespace-nowrap border border-slate-100">Vấn đề</span>
+</a>
+<a class="nav-dot-container group relative flex items-center justify-center" href="#solution">
+<div class="w-3 h-3 rounded-full bg-slate-300 transition-all duration-300 group-hover:bg-primary-container nav-dot"></div>
+<span class="nav-dot-tooltip absolute right-full mr-4 px-3 py-1 bg-white text-on-surface text-xs font-bold rounded-lg shadow-md whitespace-nowrap border border-slate-100">Giải pháp</span>
+</a>
+<a class="nav-dot-container group relative flex items-center justify-center" href="#difference">
+<div class="w-3 h-3 rounded-full bg-slate-300 transition-all duration-300 group-hover:bg-primary-container nav-dot"></div>
+<span class="nav-dot-tooltip absolute right-full mr-4 px-3 py-1 bg-white text-on-surface text-xs font-bold rounded-lg shadow-md whitespace-nowrap border border-slate-100">Khác biệt</span>
+</a>
+<a class="nav-dot-container group relative flex items-center justify-center" href="#register">
+<div class="w-3 h-3 rounded-full bg-slate-300 transition-all duration-300 group-hover:bg-primary-container nav-dot"></div>
+<span class="nav-dot-tooltip absolute right-full mr-4 px-3 py-1 bg-white text-on-surface text-xs font-bold rounded-lg shadow-md whitespace-nowrap border border-slate-100">Đăng ký</span>
+</a>
+</aside>
+<!-- Top Navigation Bar -->
+<nav class="sticky top-0 w-full z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm border-b-2 border-slate-100 shadow-[0_4px_20px_-5px_rgba(108,190,69,0.15)]">
+<div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto w-full">
+<div class="text-2xl font-black text-green-600 tracking-tighter font-display-md">
+                EduPlay
+            </div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-green-600 border-b-4 border-green-600 pb-1 font-display-md text-body-md" href="#">Programs</a>
+<a class="text-slate-600 hover:text-green-500 transition-colors font-display-md text-body-md" href="#">Parents' Guide</a>
+<a class="text-slate-600 hover:text-green-500 transition-colors font-display-md text-body-md" href="#">Pricing</a>
+<a class="text-slate-600 hover:text-green-500 transition-colors font-display-md text-body-md" href="#">About</a>
+</div>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-bold bouncy-btn transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] active:translate-y-0.5 active:scale-95">
+                Join Now
+            </button>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative overflow-hidden pt-12 md:pt-20 pb-24 px-6" id="hero">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="z-10">
+<span class="inline-block px-4 py-1.5 mb-6 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-full text-label-lg font-bold tracking-wide">
+                    DÀNH CHO TRẺ 4 - 12 TUỔI
+                </span>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-6 leading-tight">
+                    Khám phá tiềm năng ẩn sâu của con với <span class="text-primary">Bài Test Năng Lực Trí Tuệ</span> độc quyền!
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl">
+                    Không chỉ là đánh giá toán học. Cùng chuyên gia phân tích mức độ <span class="font-bold text-on-surface">Tập Trung, Ghi Nhớ, Phản Xạ và Tự Tin</span> của trẻ qua ứng dụng thông minh.
+                </p>
+<a class="inline-flex items-center gap-3 bg-primary-container text-on-primary-container px-8 py-4 rounded-full font-bold text-lg bouncy-btn" href="#register">
+                    Đăng ký tải App &amp; Nhận tư vấn miễn phí
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+<div class="mt-8 flex items-center gap-4 text-sm font-semibold text-on-surface-variant">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-white bg-slate-200"></div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-slate-300"></div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-slate-400"></div>
+</div>
+<span>10,000+ phụ huynh đã tin dùng</span>
+</div>
+</div>
+<div class="relative lg:block">
+<div class="absolute -top-12 -right-12 w-64 h-64 bg-secondary-fixed/30 rounded-full blur-3xl -z-10"></div>
+<div class="absolute -bottom-12 -left-12 w-64 h-64 bg-primary-fixed/30 rounded-full blur-3xl -z-10"></div>
+<div class="relative rounded-[40px] overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-500">
+<img alt="Happy child using educational app" class="w-full h-auto object-cover aspect-[4/3]" data-alt="joyful child smiling while interacting with a colorful learning app on a sleek tablet in a sunlit modern living room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvskJti7TKxB-yEWQbBhWN9Jyij0ly724A_ZmitFEaFgxSrXizJQ9tkoYf7GXuO1z_qa5YGGa6pJ5vYjhQFn08M_fEkNLq1UEiiDc6RE86PM9exXZ4oZFqjLNa4K9WB78Ihl5VOwsT8rW6AaEBrLCWL-SAowL4sbGc4ToHB8K9m1K-ItQ_uABQzxSSq5rllqcnG-H9g43SVEJKyVcAyzlMX2JGRS6e4MMybBq3nJGcpVoc84wzQBVhpEvHUHpAQ6_XXqzZQuSRcNo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+</div>
+<!-- Floating Elements -->
+<div class="absolute top-1/4 -left-8 glass-card p-4 rounded-2xl shadow-xl animate-bounce hidden md:block">
+<span class="material-symbols-outlined text-primary text-4xl" data-weight="fill">verified_user</span>
+</div>
+<div class="absolute bottom-1/4 -right-8 glass-card p-4 rounded-2xl shadow-xl animate-pulse hidden md:block" style="animation-delay: 1s">
+<span class="material-symbols-outlined text-secondary text-4xl" data-weight="fill">star</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Pain Points Section -->
+<section class="py-section-gap px-6 bg-surface-container-low" id="pain-points">
+<div class="max-w-7xl mx-auto text-center">
+<h2 class="font-display-md text-display-md text-on-surface mb-16">
+                Có phải ba mẹ đang lo lắng vì...
+            </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Card 1 -->
+<div class="bg-white p-8 rounded-[32px] shadow-sm hover:shadow-xl transition-all group jiggle">
+<div class="w-16 h-16 bg-error-container/20 rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-error text-3xl">psychology_alt</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg mb-4">Xao nhãng</h3>
+<p class="text-on-surface-variant">Con hay mất tập trung, khó hoàn thành nhiệm vụ được giao.</p>
+</div>
+<!-- Card 2 -->
+<div class="bg-white p-8 rounded-[32px] shadow-sm hover:shadow-xl transition-all group jiggle">
+<div class="w-16 h-16 bg-secondary-fixed/20 rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary text-3xl">timer_off</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg mb-4">Phản xạ chậm</h3>
+<p class="text-on-surface-variant">Con tốn nhiều thời gian để tiếp nhận và trả lời thông tin mới.</p>
+</div>
+<!-- Card 3 -->
+<div class="bg-white p-8 rounded-[32px] shadow-sm hover:shadow-xl transition-all group jiggle">
+<div class="w-16 h-16 bg-primary-fixed/20 rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl">mood_bad</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg mb-4">Thiếu tự tin</h3>
+<p class="text-on-surface-variant">Con ngại giao tiếp, rụt rè khi đứng trước đám đông.</p>
+</div>
+<!-- Card 4 -->
+<div class="bg-white p-8 rounded-[32px] shadow-sm hover:shadow-xl transition-all group jiggle">
+<div class="w-16 h-16 bg-tertiary-fixed/20 rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-tertiary text-3xl">neurology</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg mb-4">Học trước quên sau</h3>
+<p class="text-on-surface-variant">Gặp khó khăn trong việc ghi nhớ kiến thức một cách hệ thống.</p>
+</div>
+</div>
+<div class="mt-16 p-8 bg-primary-container/10 rounded-[40px] border-2 border-dashed border-primary-container">
+<p class="font-display-md text-headline-lg text-primary max-w-4xl mx-auto italic">
+                    "Mỗi đứa trẻ đều có một bộ não thiên tài, chỉ là ba mẹ chưa tìm đúng môi trường để kích hoạt."
+                </p>
+</div>
+</div>
+</section>
+<!-- App Intro Section -->
+<section class="py-section-gap px-6 bg-white overflow-hidden" id="solution">
+<div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+<div class="lg:w-1/2 relative">
+<div class="absolute -inset-4 bg-tertiary-container/10 rounded-full blur-3xl -z-10"></div>
+<div class="relative z-10 p-4 bg-slate-900 rounded-[3rem] shadow-2xl ring-8 ring-slate-100">
+<img alt="Educational app interface" class="rounded-[2.5rem] w-full h-auto" data-alt="colorful user interface of a children learning app showing vibrant educational games and progress charts on a digital tablet" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhCzdW1Rwudx4PO4F7gygcG2V70V4KQXrAAyNV6slQGfSG8jFEADlBR31GE58Ud-4__zBZwQwX32aighVBiA9txCk13YYcLXFMmq1GLuVVg_wMiVFl36NLiuqHcsoIkqYPjkKFsIM1cygSzvgjr-WiIOuPQ2w_oz7kZrInu7Drkgvrc8SLK76HH4xFto__RhEx-owSHZzpL9wSESUnGIiTnn-M_mXsxiUB7-PbJm6tiSldggjOHUQ0khBuZThrjeZhBE69B33QOww"/>
+</div>
+<!-- Badge -->
+<div class="absolute -bottom-8 -right-8 bg-secondary-container text-on-secondary-container p-6 rounded-full shadow-xl font-black text-center leading-tight w-32 h-32 flex flex-col justify-center transform rotate-12">
+<span class="text-2xl">FREE</span>
+<span class="text-sm">DOWNLOAD</span>
+</div>
+</div>
+<div class="lg:w-1/2">
+<h2 class="font-display-md text-display-md mb-8 leading-tight">
+                    Ứng dụng thiết kế bởi <br/><span class="text-tertiary">Chuyên gia hàng đầu</span>
+</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8">
+                    Hệ thống bài test của EduPlay được xây dựng dựa trên nghiên cứu khoa học về sự phát triển não bộ trẻ em. Trẻ không cảm thấy áp lực thi cử, mà sẽ tương tác với ứng dụng như đang tham gia một trò chơi phiêu lưu đầy thú vị.
+                </p>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-4 font-bold text-on-surface">
+<span class="material-symbols-outlined text-primary bg-primary-container/20 p-1 rounded-full">check</span>
+                        Giao diện trực quan, âm thanh sinh động
+                    </li>
+<li class="flex items-center gap-4 font-bold text-on-surface">
+<span class="material-symbols-outlined text-primary bg-primary-container/20 p-1 rounded-full">check</span>
+                        Bài tập cá nhân hóa theo từng độ tuổi
+                    </li>
+<li class="flex items-center gap-4 font-bold text-on-surface">
+<span class="material-symbols-outlined text-primary bg-primary-container/20 p-1 rounded-full">check</span>
+                        Theo dõi tiến độ học tập real-time
+                    </li>
+</ul>
+<button class="bg-tertiary text-white px-8 py-4 rounded-full font-bold bouncy-btn flex items-center gap-3">
+<span class="material-symbols-outlined" data-weight="fill">play_circle</span>
+                    Xem Video giới thiệu
+                </button>
+</div>
+</div>
+</section>
+<!-- Core Difference Section -->
+<section class="py-section-gap px-6 relative" id="difference">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-display-md text-display-md mb-6">Sự khác biệt thực sự tại Superbrain</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mx-auto">
+                    Kết quả trên App chỉ là bước khởi đầu. <span class="text-primary font-bold">Sự đồng hành của chuyên gia</span> mới là chìa khóa để mở ra cánh cửa tiềm năng của trẻ.
+                </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div class="space-y-8 order-2 md:order-1">
+<div class="flex gap-6 p-6 bg-white rounded-3xl shadow-sm border-l-8 border-primary-container">
+<div class="flex-shrink-0">
+<span class="text-4xl font-black text-primary/30">01</span>
+</div>
+<div>
+<h4 class="font-headline-lg mb-2">Quan sát chuyên sâu</h4>
+<p class="text-on-surface-variant">Giáo viên trực tiếp quan sát khi con làm test trên app để đánh giá tư duy, phản xạ và sự kiên nhẫn.</p>
+</div>
+</div>
+<div class="flex gap-6 p-6 bg-white rounded-3xl shadow-sm border-l-8 border-secondary-container">
+<div class="flex-shrink-0">
+<span class="text-4xl font-black text-secondary/30">02</span>
+</div>
+<div>
+<h4 class="font-headline-lg mb-2">Phân tích đa chiều</h4>
+<p class="text-on-surface-variant">Không chỉ có con số, chúng tôi đưa ra lộ trình phát triển cụ thể dựa trên tính cách và năng khiếu của con.</p>
+</div>
+</div>
+<div class="flex gap-6 p-6 bg-white rounded-3xl shadow-sm border-l-8 border-tertiary-container">
+<div class="flex-shrink-0">
+<span class="text-4xl font-black text-tertiary/30">03</span>
+</div>
+<div>
+<h4 class="font-headline-lg mb-2">Kích hoạt 4 lõi năng lực</h4>
+<p class="text-on-surface-variant">Tập trung, Ghi nhớ, Phản xạ và Tự tin được rèn luyện đồng bộ qua phương pháp Superbrain.</p>
+</div>
+</div>
+</div>
+<div class="order-1 md:order-2">
+<img alt="Teacher assisting child" class="rounded-[40px] shadow-2xl" data-alt="friendly female teacher smiling and guiding a young boy as he uses an iPad in a bright cheerful modern classroom" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcFuZgcQSJ62e0s9xjd0WF_VWk_qnUKwCFwTO3tVcjRD_AzgAFPgZt8uzxwo2oV421z7H9CM1nyYqVt8t0VOVMtnFkza5nhxIuNBIahCgMNVo7fjnVY9tDftvCq_eHD6AbrHlM3JXpH4LtDFshD0dZ8Pcw-1GZYrPsl5BN3gTnYQovDryCxW1BQOJtLpEMLRQ4W9gFsHCCQGnn1_LZ6kDKGjLJfGJKv501LwAd89pBB01uotZnlG-5xYxQ6ARhH9_WS8kcCCkE2dU"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Registration Form Section -->
+<section class="py-section-gap px-6" id="register">
+<div class="max-w-5xl mx-auto bg-primary text-on-primary rounded-[60px] p-8 md:p-16 shadow-2xl relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-black/10 rounded-full -ml-32 -mb-32 blur-3xl"></div>
+<div class="relative z-10">
+<div class="text-center mb-12">
+<h2 class="font-display-md text-display-md mb-4">Bắt đầu hành trình cho con</h2>
+<p class="font-body-lg text-primary-fixed max-w-xl mx-auto">Điền thông tin bên dưới để nhận mã kích hoạt App và đặt lịch tư vấn cùng chuyên gia EduPlay.</p>
+</div>
+<form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="block font-bold text-sm">Tên Phụ Huynh *</label>
+<input class="w-full bg-white text-on-surface border-none rounded-2xl p-4 focus:ring-4 focus:ring-secondary-container transition-all" placeholder="Nhập họ và tên của ba/mẹ" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="block font-bold text-sm">Tên Của Con *</label>
+<input class="w-full bg-white text-on-surface border-none rounded-2xl p-4 focus:ring-4 focus:ring-secondary-container transition-all" placeholder="Nhập tên của bé" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="block font-bold text-sm">Độ Tuổi Của Con *</label>
+<select class="w-full bg-white text-on-surface border-none rounded-2xl p-4 focus:ring-4 focus:ring-secondary-container transition-all">
+<option>4 - 6 tuổi</option>
+<option>7 - 9 tuổi</option>
+<option>10 - 12 tuổi</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="block font-bold text-sm">Số Điện Thoại *</label>
+<input class="w-full bg-white text-on-surface border-none rounded-2xl p-4 focus:ring-4 focus:ring-secondary-container transition-all" placeholder="Ví dụ: 0912345678" type="tel"/>
+</div>
+<div class="md:col-span-2 space-y-2">
+<label class="block font-bold text-sm">Khu vực/Cơ sở gần bạn nhất *</label>
+<select class="w-full bg-white text-on-surface border-none rounded-2xl p-4 focus:ring-4 focus:ring-secondary-container transition-all">
+<option>Hà Nội - Quận Cầu Giấy</option>
+<option>Hà Nội - Quận Hoàn Kiếm</option>
+<option>TP. HCM - Quận 1</option>
+<option>TP. HCM - Quận 7</option>
+<option>Đà Nẵng - Quận Hải Châu</option>
+</select>
+</div>
+<div class="md:col-span-2 mt-8">
+<button class="w-full bg-secondary-container text-on-secondary-container py-6 rounded-2xl font-black text-xl bouncy-secondary shadow-lg" type="submit">
+                            Bắt đầu hành trình phát triển toàn diện cho con ngay hôm nay!
+                        </button>
+<p class="text-center mt-4 text-xs opacity-70 italic">* Thông tin của bạn được bảo mật tuyệt đối theo chính sách an toàn của EduPlay.</p>
+</div>
+</form>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-slate-50 border-t border-slate-200 rounded-t-[40px] mt-20">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 py-12 max-w-7xl mx-auto w-full gap-8">
+<div class="flex flex-col items-center md:items-start">
+<div class="text-xl font-black text-green-600 mb-4">EduPlay</div>
+<p class="text-sm font-medium text-slate-500 text-center md:text-left max-w-xs">© 2024 EduPlay Learning. Safe &amp; Secure for Little Explorers.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-sm font-medium text-slate-500 hover:text-green-500 transition-all hover:underline underline-offset-4" href="#">Privacy Policy</a>
+<a class="text-sm font-medium text-slate-500 hover:text-green-500 transition-all hover:underline underline-offset-4" href="#">Terms of Service</a>
+<a class="text-sm font-medium text-slate-500 hover:text-green-500 transition-all hover:underline underline-offset-4" href="#">Safety Center</a>
+<a class="text-sm font-medium text-slate-500 hover:text-green-500 transition-all hover:underline underline-offset-4" href="#">Support</a>
+<a class="text-sm font-medium text-slate-500 hover:text-green-500 transition-all hover:underline underline-offset-4" href="#">Careers</a>
+</div>
+<div class="flex gap-4">
+<button class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center text-slate-600 hover:bg-primary-container hover:text-white transition-colors">
+<span class="material-symbols-outlined text-sm">share</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center text-slate-600 hover:bg-primary-container hover:text-white transition-colors">
+<span class="material-symbols-outlined text-sm">mail</span>
+</button>
+</div>
+</div>
+</footer>
+<script>
+    // Script to handle scroll highlighting for the floating navigation
+    const sections = ['hero', 'pain-points', 'solution', 'difference', 'register'];
+    const navDots = document.querySelectorAll('.nav-dot');
+    
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionEl = document.getElementById(section);
+            const sectionTop = sectionEl.offsetTop;
+            const sectionHeight = sectionEl.clientHeight;
+            if (pageYOffset >= (sectionTop - 200)) {
+                current = section;
+            }
+        });
+
+        navDots.forEach((dot, index) => {
+            dot.classList.remove('nav-dot-active');
+            if (sections[index] === current) {
+                dot.classList.add('nav-dot-active');
+            }
+        });
+    });
+</script>
+</body></html>
