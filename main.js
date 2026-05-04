@@ -184,3 +184,53 @@ cards.forEach(card => {
 });
 
 console.log('Superbrain Landing Page Initialized');
+
+// --- Program Section Carousel ---
+(function () {
+  const track = document.getElementById('progTrack');
+  const viewport = document.getElementById('progViewport');
+  const prevBtn = document.getElementById('progPrev');
+  const nextBtn = document.getElementById('progNext');
+  const dotsContainer = document.getElementById('progDots');
+
+  if (!track || !viewport) return;
+
+  const slides = Array.from(track.children);
+  const dots = dotsContainer ? Array.from(dotsContainer.children) : [];
+  let current = 0;
+
+  function update(animate) {
+    const slideWidth = viewport.offsetWidth;
+
+    if (!animate) track.style.transition = 'none';
+    else track.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+
+    track.style.transform = `translateX(${-current * slideWidth}px)`;
+
+    slides.forEach((slide, i) => {
+      slide.style.minWidth = slideWidth + 'px';
+      slide.style.maxWidth = slideWidth + 'px';
+    });
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === current);
+    });
+
+    if (prevBtn) prevBtn.disabled = current === 0;
+    if (nextBtn) nextBtn.disabled = current === slides.length - 1;
+
+    // Force reflow when removing transition
+    if (!animate) track.getBoundingClientRect();
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', () => { if (current > 0) { current--; update(true); } });
+  if (nextBtn) nextBtn.addEventListener('click', () => { if (current < slides.length - 1) { current++; update(true); } });
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => { current = i; update(true); });
+  });
+
+  window.addEventListener('resize', () => update(false));
+
+  update(false);
+})();
