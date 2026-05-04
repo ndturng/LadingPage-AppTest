@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduPlay - Khám Phá Tiềm Năng Trí Tuệ Của Trẻ</title>
+    <title>Superbrain - Khám Phá Tiềm Năng Trí Tuệ Của Trẻ</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -32,6 +32,7 @@
             <ul class="nav-links">
                 <li><a href="#hero" class="active">Trang chủ</a></li>
                 <li><a href="#pain-points">Test năng lực đầu vào là gì?</a></li>
+                <li><a href="#program">Chương trình Superbrain</a></li>
             </ul>
             <a class="btn btn-primary text-base" href="#register">Đăng ký ngay!</a>
         </div>
@@ -67,16 +68,8 @@
                         <span>10,000+ phụ huynh đã tin dùng</span>
                     </div>
                 </div>
-                <div class="hero-visual">
-                    <div class="image-wrapper">
-                        <img src="/assets/hero.png" alt="Happy child using educational app">
-                        <div class="overlay-badge top-left glass-card animate-bounce">
-                            <span class="material-symbols-outlined filled">verified_user</span>
-                        </div>
-                        <div class="overlay-badge bottom-right glass-card animate-pulse">
-                            <span class="material-symbols-outlined filled">star</span>
-                        </div>
-                    </div>
+                <div class="image-wrapper">
+                    <video src="/assets/video.mov" autoplay="" loop="" muted="" playsinline="" style="width: 100%; height: auto; border-radius: 1.5rem; object-fit: cover; background: #e0e7ef;" alt="Happy child using educational app"></video>
                 </div>
             </div>
         </section>
@@ -185,7 +178,8 @@
         <section id="program" class="section bg-alt">
             <div class="container text-center">
                 <h2>VẬY LÀM THẾ NÀO ĐỂ GIÚP CON PHÁT HUY NHỮNG ĐIỂM MẠNH CỦA MÌNH?</h2>
-                <p style="font-size: 24px;">Chương trình Toán trí tuệ sẽ giúp con cải thiện khả năng TẬP TRUNG - GHI NHỚ - PHẢN XẠ - TỰ TIN bằng cách sử dụng các con số và phép tính.</p>
+                <p style="font-size: 20px;padding-bottom: 20px;">Chương trình Toán trí tuệ sẽ giúp con cải thiện khả năng <b>TẬP TRUNG - GHI NHỚ - PHẢN XẠ - TỰ TIN</b> 
+                    <br/>bằng cách sử dụng các con số và phép tính.</p>
                 <p><a href="https://superbrain.edu.vn/" class="btn btn-primary">→ Click tìm hiểu thêm</a></p>
             </div>
         </section>
@@ -211,11 +205,7 @@
                         </div>
                         <div class="form-group">
                             <label for="child-age">Độ Tuổi Của Con *</label>
-                            <select id="child-age">
-                                <option value="4-6">4 - 6 tuổi</option>
-                                <option value="7-9">7 - 9 tuổi</option>
-                                <option value="10-12">10 - 12 tuổi</option>
-                            </select>
+                            <input type="number" id="child-age" placeholder="Nhập tuổi của bé (Ví dụ: 4)" required>
                         </div>
                         <div class="form-group">
                             <label for="phone">Số Điện Thoại *</label>
