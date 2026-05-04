@@ -21,6 +21,13 @@
   color: var(--primary);
   text-decoration: none;
   letter-spacing: -1px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 50px;
+  width: auto;
 }
 
 .nav-links {
@@ -237,12 +244,12 @@ h2 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
-  margin-top: 60px;
+  margin-top: 30px;
 }
 
 .card {
   background: #fff;
-  padding: 40px 32px;
+  padding: 25px 30px;
   border-radius: 16px;
   /* Unified border-radius */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
@@ -262,6 +269,7 @@ h2 {
   align-items: center;
   justify-content: center;
   margin: 0 auto 24px;
+  overflow: hidden;
 }
 
 .icon-box.error {
@@ -282,6 +290,18 @@ h2 {
 .icon-box.tertiary {
   background: rgba(91, 179, 234, 0.1);
   color: var(--tertiary);
+}
+
+.icon-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.cards-grid .card:nth-child(4) .icon-box img {
+  transform: scale(1.4);
 }
 
 .icon-box span {
@@ -305,15 +325,195 @@ h2 {
   margin: 0 auto;
 }
 
+/* Program Section */
+#program {
+  background-color: #f1f8e9;
+}
+
+#program h2 {
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.program-link {
+  font-size: 18px;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 700;
+  font-style: italic;
+  transition: font-weight 0.2s;
+}
+
+.program-link:hover {
+  font-weight: 900;
+}
+
+.program-container {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--surface-variant);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  height: var(--info-box-height);
+}
+
+.program-left {
+  padding: 48px 40px;
+  border-right: 2px solid var(--surface-variant);
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.program-right {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--surface-container-low);
+}
+
+/* Program carousel */
+.prog-carousel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.prog-carousel-viewport {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.prog-carousel-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.prog-slide {
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+
+.prog-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.prog-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.25);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, opacity 0.2s;
+  opacity: 0.5;
+}
+
+.prog-carousel-prev {
+  left: 12px;
+}
+
+.prog-carousel-next {
+  right: 12px;
+}
+
+.prog-carousel-btn:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.65);
+  opacity: 1;
+}
+
+.prog-carousel-btn:disabled {
+  opacity: 0.15;
+  cursor: not-allowed;
+}
+
+.prog-carousel-btn span {
+  font-size: 28px;
+}
+
+.prog-carousel-dots {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+}
+
+.prog-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s;
+}
+
+.prog-dot.active {
+  width: 28px;
+  border-radius: 999px;
+  background: #fff;
+}
+
 /* Why Test Section */
 .why-test-container {
   margin-top: 80px;
   background: #fff;
   border-radius: 16px;
-  /* Unified border-radius */
   padding: 60px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
   border: 1px solid var(--surface-variant);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  height: var(--info-box-height);
+  box-sizing: border-box;
+  overflow: hidden;
+  height: 620px; 
+}
+
+.why-test-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.why-test-visual img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 16px;
+  display: block;
 }
 
 .why-test-content h3 {
@@ -338,24 +538,20 @@ h2 {
 
 .why-list li {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 16px;
   font-size: 16px;
-  font-weight: 600;
-  color: var(--on-surface);
+  color: var(--on-surface-variant);
 }
 
 .why-list li span.material-symbols-outlined {
-  color: var(--error);
-  background: var(--error-container);
-  padding: 8px;
-  border-radius: 12px;
+  color: var(--primary-container);
   font-size: 24px;
+  flex-shrink: 0;
 }
 
 .why-list li:last-child span.material-symbols-outlined {
-  color: var(--primary);
-  background: var(--primary-container);
+  color: var(--primary-container);
 }
 
 /* Benefits Section */
@@ -370,35 +566,71 @@ h2 {
 
 .benefits-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 32px;
 }
 
 .benefit-card {
   background: #fff;
   padding: 40px;
-  border-radius: 16px;
-  /* Unified border-radius */
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
   transition: all 0.3s;
   text-align: left;
+  border-top: 4px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.benefit-card--parent {
+  border-top-color: var(--primary-container);
+}
+
+.benefit-card--student {
+  border-top-color: var(--secondary-container);
 }
 
 .benefit-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.10);
+}
+
+.benefit-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--surface-container);
 }
 
 .benefit-icon {
-  width: 56px;
-  height: 56px;
-  background: var(--tertiary-container);
-  color: var(--on-tertiary-container);
-  border-radius: 16px;
+  width: 70px;
+  height: 64px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 24px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.benefit-card--parent .benefit-icon {
+  background: rgba(108, 190, 69, 0.12);
+  color: var(--primary);
+}
+
+.benefit-card--student .benefit-icon {
+  background: rgba(128, 86, 0, 0.10);
+  color: var(--secondary);
+}
+
+.benefit-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 .benefit-icon span {
@@ -406,15 +638,39 @@ h2 {
 }
 
 .benefit-card h4 {
-  font-size: 20px;
-  margin-bottom: 12px;
+  font-size: 22px;
+  font-weight: 800;
   color: var(--on-surface);
+  margin: 0;
 }
 
-.benefit-card p {
+.benefit-list {
+  list-style: none;
+  display: grid;
+  gap: 16px;
+}
+
+.benefit-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
   font-size: 15px;
   color: var(--on-surface-variant);
   line-height: 1.6;
+}
+
+.benefit-card--parent .benefit-list li span.material-symbols-outlined {
+  color: var(--primary);
+  font-size: 22px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.benefit-card--student .benefit-list li span.material-symbols-outlined {
+  color: var(--secondary);
+  font-size: 22px;
+  flex-shrink: 0;
+  margin-top: 1px;
 }
 
 /* Split Layout */
@@ -714,6 +970,25 @@ h2 {
 
   .why-test-container {
     padding: 40px;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    height: auto;
+  }
+
+  .program-container {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .program-left {
+    border-right: none;
+    border-bottom: 2px solid var(--surface-variant);
+    padding: 40px;
+  }
+
+  .program-right {
+    padding: 40px;
+    min-height: 400px;
   }
 }
 
@@ -759,5 +1034,10 @@ h2 {
 
   .why-test-content h3 {
     font-size: 24px;
+  }
+
+  .program-right {
+    min-height: 360px;
+    padding: 30px 20px;
   }
 }

@@ -36,6 +36,9 @@
   --base-spacing: 8px;
   --section-gap: 80px;
   --container-max: 1200px;
+
+  /* Section box heights — adjust here to resize both boxes together */
+  --info-box-height: 540px;
   
   /* Borders */
   --radius-sm: 0.25rem;
