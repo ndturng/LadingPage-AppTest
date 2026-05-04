@@ -335,19 +335,6 @@ h2 {
   text-align: center;
 }
 
-.program-link {
-  font-size: 18px;
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: 700;
-  font-style: italic;
-  transition: font-weight 0.2s;
-}
-
-.program-link:hover {
-  font-weight: 900;
-}
-
 .program-container {
   background: #fff;
   border-radius: 16px;
