@@ -92,7 +92,7 @@ h1, h2, h3, h4 {
 
 .btn-primary {
   background-color: var(--primary-container);
-  color: var(--on-primary-container);
+  color: var(--on-primary);
   box-shadow: 0 4px 0 0 var(--on-primary-container);
 }
 
