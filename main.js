@@ -42,6 +42,80 @@ let locationData = {
 const provinceSelect = document.getElementById('province');
 const branchSelect = document.getElementById('branch');
 
+function extractLocationLabel(value) {
+  if (value == null) return '';
+  if (typeof value === 'string' || typeof value === 'number') return String(value).trim();
+
+  if (typeof value === 'object') {
+    const preferredKeys = ['name', 'branch_name', 'branchName', 'title', 'label', 'value'];
+
+    for (const key of preferredKeys) {
+      const candidate = value[key];
+      if (typeof candidate === 'string' || typeof candidate === 'number') {
+        return String(candidate).trim();
+      }
+    }
+
+    const primitiveValues = Object.values(value)
+      .filter(item => typeof item === 'string' || typeof item === 'number')
+      .map(item => String(item).trim())
+      .filter(Boolean);
+
+    if (primitiveValues.length > 0) {
+      return primitiveValues[0];
+    }
+  }
+
+  return '';
+}
+
+function normalizeLocationData(rawData) {
+  const normalized = {};
+
+  if (!rawData || typeof rawData !== 'object') {
+    return normalized;
+  }
+
+  if (Array.isArray(rawData)) {
+    rawData.forEach(row => {
+      if (!row || typeof row !== 'object') return;
+
+      const province = extractLocationLabel(row.province || row.tinh || row.city || row.location);
+      const branch = extractLocationLabel(row.branch || row.coso || row.branchName || row.branch_name || row.name || row.title);
+
+      if (!province || !branch) return;
+
+      if (!normalized[province]) {
+        normalized[province] = [];
+      }
+
+      normalized[province].push(branch);
+    });
+
+    return normalized;
+  }
+
+  Object.entries(rawData).forEach(([province, branches]) => {
+    const provinceLabel = extractLocationLabel(province);
+    if (!provinceLabel) return;
+
+    const branchList = Array.isArray(branches) ? branches : [branches];
+    const labels = branchList
+      .map(branch => extractLocationLabel(branch))
+      .filter(Boolean);
+
+    if (labels.length > 0) {
+      normalized[provinceLabel] = labels;
+    }
+  });
+
+  Object.keys(normalized).forEach(province => {
+    normalized[province] = Array.from(new Set(normalized[province])).sort((a, b) => a.localeCompare(b, 'vi'));
+  });
+
+  return normalized;
+}
+
 // Function to populate Province dropdown
 function populateProvinces() {
   if (!provinceSelect) return;
@@ -54,6 +128,27 @@ function populateProvinces() {
     provinceSelect.appendChild(option);
   });
   provinceSelect.value = currentValue;
+}
+
+function populateBranches(selectedProvince) {
+  if (!branchSelect) return;
+
+  branchSelect.innerHTML = '<option value="">Chọn Cơ sở</option>';
+
+  const branches = selectedProvince && locationData[selectedProvince] ? locationData[selectedProvince] : [];
+
+  if (!selectedProvince || branches.length === 0) {
+    branchSelect.disabled = true;
+    return;
+  }
+
+  branchSelect.disabled = false;
+  branches.forEach(branch => {
+    const option = document.createElement('option');
+    option.value = branch;
+    option.textContent = branch;
+    branchSelect.appendChild(option);
+  });
 }
 
 // Function to fetch dynamic locations from Google Sheet (via Apps Script or CSV)
@@ -73,9 +168,12 @@ async function fetchLocations() {
     // const text = await response.text();
     // const dynamicData = parseCSVToLocationData(text);
 
-    if (Object.keys(dynamicData).length > 0) {
-      locationData = dynamicData;
+    const normalizedData = normalizeLocationData(dynamicData);
+
+    if (Object.keys(normalizedData).length > 0) {
+      locationData = normalizedData;
       populateProvinces();
+      populateBranches(provinceSelect ? provinceSelect.value : '');
       console.log('Locations updated from Google Sheet');
     }
   } catch (error) {
@@ -90,19 +188,7 @@ if (provinceSelect && branchSelect) {
   // Handle Province Change
   provinceSelect.addEventListener('change', () => {
     const selectedProvince = provinceSelect.value;
-    branchSelect.innerHTML = '<option value="">Chọn Cơ sở</option>';
-
-    if (selectedProvince && locationData[selectedProvince]) {
-      branchSelect.disabled = false;
-      locationData[selectedProvince].sort().forEach(branch => {
-        const option = document.createElement('option');
-        option.value = branch;
-        option.textContent = branch;
-        branchSelect.appendChild(option);
-      });
-    } else {
-      branchSelect.disabled = true;
-    }
+    populateBranches(selectedProvince);
   });
 }
 
